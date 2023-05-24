@@ -2,13 +2,14 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="rydaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.com.mycompany.backendapplication.Customer</class>
     <class>com.mycompany.backendapplication.Document</class>
-    <class>com.mycompany.backendapplication.Quiz/</class>
     <class>com.mycompany.backendapplication.QuizQuestion</class>
-    <class>com.mycompany.backendapplication.Survey/</class>
-    <class>com.mycompany.backendapplication.SurveyQuestion/</class>
-    <class>com.mycompany.backendapplication.User/</class>
+    <class>com.mycompany.backendapplication.Survey</class>
+    <class>com.mycompany.backendapplication.SurveyQuestion</class>
+    <class>com.mycompany.backendapplication.User</class>
+    <class>com.mycompany.backendapplication.Answer</class>
+    <class>com.mycompany.backendapplication.Quiz</class>
+<!--    <class>com.mycompany.backendapplication.Customer</class>-->
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ryda_database?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

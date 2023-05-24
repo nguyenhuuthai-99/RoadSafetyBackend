@@ -8,12 +8,12 @@ import javax.persistence.*;
 public class Survey {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int surveyId;
     private String title;
-    @OneToMany
-    @JoinColumn(name = "serveyQuestionId")
-    private List<SurveyQuestion> surveyQuestionList = new java.util.ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "survey")
+    @JoinColumn(name = "surveyQuestionId")
+    private List<SurveyQuestion> surveyQuestionList;
 
     public Survey(List<SurveyQuestion> surveyQuestionList) {
         this.surveyQuestionList = surveyQuestionList;

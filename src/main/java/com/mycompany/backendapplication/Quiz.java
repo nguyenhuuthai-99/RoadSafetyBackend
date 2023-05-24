@@ -12,15 +12,13 @@ public class Quiz implements Serializable {
     @Serial
     private static final long serialVersionUID = -5636159804005731282L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int quizID;
-    @OneToMany
-    @JoinColumn(name = "quizQuestionId")
-    private List<QuizQuestion> quizQuestionList = new java.util.ArrayList<>();
-
-    public Quiz(List<QuizQuestion> quizQuestionList) {
-        this.quizQuestionList = quizQuestionList;
-    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quiz")
+    @JoinColumn(name = "quizId", referencedColumnName = "quizId")
+    private List<QuizQuestion> quizQuestionList;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    private Customer customer;
 
     public Quiz() {
 

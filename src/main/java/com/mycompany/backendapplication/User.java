@@ -1,11 +1,15 @@
 package com.mycompany.backendapplication;
 
 import javax.persistence.*;
+import java.io.Serial;
+import java.io.Serializable;
 
 @Entity
 @Table(name= "user")
-public class User {
+public class User implements Serializable {
 
+    @Serial
+    private static final long serialVersionUID = 8876647670961537322L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;

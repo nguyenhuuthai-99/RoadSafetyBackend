@@ -8,10 +8,14 @@ import javax.persistence.*;
 public class SurveyQuestion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int surveyQuestionId;
     private String question;
+    @ElementCollection
     private List<String> selection;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "surveyId")
+    private Survey survey;
 
     public SurveyQuestion() {
     }
@@ -38,5 +42,13 @@ public class SurveyQuestion {
 
     public void setSelection(List<String> selection) {
         this.selection = selection;
+    }
+
+    public Survey getSurvey() {
+        return survey;
+    }
+
+    public void setSurvey(Survey survey) {
+        this.survey = survey;
     }
 }

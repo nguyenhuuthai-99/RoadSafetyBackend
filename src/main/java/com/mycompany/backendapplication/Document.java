@@ -5,7 +5,10 @@ import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
-@Table(name= "document")
+@Table(name = "document")
+@NamedQueries({
+        @NamedQuery(name = "Document.findByDocumentId", query = "select d from Document d where d.documentId = :documentId")
+})
 public class Document implements Serializable {
 
     @Serial
