@@ -7,6 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "quiz")
+@NamedQueries({
+        @NamedQuery(name = "Quiz.findByQuizID", query = "select q from Quiz q where q.quizID = :quizID")
+})
 public class Quiz implements Serializable {
 
     @Serial

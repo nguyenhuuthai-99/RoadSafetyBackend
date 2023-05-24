@@ -4,7 +4,10 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name= "survey")
+@Table(name = "survey")
+@NamedQueries({
+        @NamedQuery(name = "Survey.findBySurveyId", query = "select s from Survey s where s.surveyId = :surveyId")
+})
 public class Survey {
 
     @Id

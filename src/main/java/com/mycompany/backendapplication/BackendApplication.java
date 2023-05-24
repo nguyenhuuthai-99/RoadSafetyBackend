@@ -28,8 +28,19 @@ public class BackendApplication {
 
 //        addSurvey();
 
-        viewDocument(2);
+        //viewDocument(2);
 
+        viewQuiz(51);
+
+        viewSurvey(1);
+
+    }
+
+    private static void login(){
+
+    }
+
+    private static void register(){
 
     }
 
@@ -86,7 +97,7 @@ public class BackendApplication {
         selections.add("selection 3");
         surveyQuestion1.setSelection(selections);
         SurveyQuestion surveyQuestion2 = new SurveyQuestion();
-        surveyQuestion2.setQuestion("survey question 1");
+        surveyQuestion2.setQuestion("survey question 2");
         List<String> selections2 =new ArrayList<>();
         selections2.add("selection 1");
         selections2.add("selection 2");
@@ -111,12 +122,25 @@ public class BackendApplication {
                 "\ncontent:"+ document.getContent());
     }
 
-    private static void viewQuiz(){
-
+    private static void viewQuiz(int id){
+        Quiz quiz = databaseHelper.viewQuiz(id);
+        System.out.println(quiz.getQuizQuestionList().get(0).getQuestion());
     }
 
-    private static void viewSurvey(){
+    private static void viewSurvey(int id){
+        Survey survey = databaseHelper.viewSurvey(id);
+        System.out.println("title: "+ survey.getTitle());
+        int count = 0;
+        for(SurveyQuestion question: survey.getSurveyQuestionList()){
+            count +=1;
+            System.out.println("question " + count+
+                    ": "+ question.getQuestion());
+            for (int i = 0; i < question.getSelection().size(); i++) {
+                System.out.println("selection " +(i+1)+": "+
+                        question.getSelection().get(i));
 
+            }
+        }
     }
 
 

@@ -70,7 +70,6 @@ public class DatabaseHelper {
 
         entityTransaction.begin();
 
-
         TypedQuery<Document> query = entityManager.createNamedQuery("Document.findByDocumentId", Document.class);
         query.setParameter("documentId", id);
 
@@ -81,12 +80,30 @@ public class DatabaseHelper {
         return document;
     }
 
-    public void viewQuiz(){
+    public Quiz viewQuiz(int id){
+        entityTransaction.begin();
 
+        TypedQuery<Quiz> query = entityManager.createNamedQuery("Quiz.findByQuizID", Quiz.class);
+        query.setParameter("quizID", id);
+
+        Quiz quiz = query.getSingleResult();
+
+        entityTransaction.commit();
+
+        return quiz;
     }
 
-    public void viewSurvey(){
+    public Survey viewSurvey(int id){
+        entityTransaction.begin();
 
+        TypedQuery<Survey> query = entityManager.createNamedQuery("Survey.findBySurveyId", Survey.class);
+        query.setParameter("surveyId", id);
+
+        Survey survey = query.getSingleResult();
+
+        entityTransaction.commit();
+
+        return survey;
     }
 
     private String encryptPassword(){
