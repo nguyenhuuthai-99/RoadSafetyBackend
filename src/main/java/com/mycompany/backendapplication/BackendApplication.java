@@ -38,7 +38,7 @@ public class BackendApplication {
 
 //        getQuizzes();
 
-//        getSurveys();
+        getSurveys();
     }
 
     private static void login(){
@@ -151,10 +151,10 @@ public class BackendApplication {
     private static void getDocuments(){
         List<Document> documents = databaseHelper.getDocuments();
 
-        for (int i = 0; i < documents.size(); i++) {
-            System.out.println(documents.get(i).getDocumentId());
-            System.out.println(documents.get(i).getTitle());
-            System.out.println(documents.get(i).getContent());
+        for (Document document : documents) {
+            System.out.println(document.getDocumentId());
+            System.out.println(document.getTitle());
+            System.out.println(document.getContent());
         }
     }
 
