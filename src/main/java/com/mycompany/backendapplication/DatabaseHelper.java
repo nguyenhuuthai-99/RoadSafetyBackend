@@ -5,6 +5,8 @@
 package com.mycompany.backendapplication;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -104,6 +106,24 @@ public class DatabaseHelper {
         entityTransaction.commit();
 
         return survey;
+    }
+
+    public List<Document> getDocuments(){
+        TypedQuery<Document> query = entityManager.createNamedQuery("Document.findAll",Document.class);
+
+        return query.getResultList();
+    }
+
+    public List<Quiz> getQuizzes(){
+        TypedQuery<Quiz> query = entityManager.createNamedQuery("Quiz.findAll",Quiz.class);
+
+        return query.getResultList();
+    }
+
+    public List<Survey> getSurveys(){
+        TypedQuery<Survey> query = entityManager.createNamedQuery("Survey.findAll",Survey.class);
+
+        return query.getResultList();
     }
 
     private String encryptPassword(){

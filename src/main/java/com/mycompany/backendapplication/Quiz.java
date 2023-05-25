@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "quiz")
 @NamedQueries({
-        @NamedQuery(name = "Quiz.findByQuizID", query = "select q from Quiz q where q.quizID = :quizID")
+        @NamedQuery(name = "Quiz.findByQuizID", query = "select q from Quiz q where q.quizID = :quizID"),
+        @NamedQuery(name = "Quiz.findAll", query = "select q from Quiz q")
 })
 public class Quiz implements Serializable {
 

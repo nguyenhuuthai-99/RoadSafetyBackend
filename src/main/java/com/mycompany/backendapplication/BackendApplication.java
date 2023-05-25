@@ -30,10 +30,15 @@ public class BackendApplication {
 
         //viewDocument(2);
 
-        viewQuiz(51);
+//        viewQuiz(51);
+//
+//        viewSurvey(1);
 
-        viewSurvey(1);
+//        getDocuments();
 
+//        getQuizzes();
+
+//        getSurveys();
     }
 
     private static void login(){
@@ -139,6 +144,45 @@ public class BackendApplication {
                 System.out.println("selection " +(i+1)+": "+
                         question.getSelection().get(i));
 
+            }
+        }
+    }
+
+    private static void getDocuments(){
+        List<Document> documents = databaseHelper.getDocuments();
+
+        for (int i = 0; i < documents.size(); i++) {
+            System.out.println(documents.get(i).getDocumentId());
+            System.out.println(documents.get(i).getTitle());
+            System.out.println(documents.get(i).getContent());
+        }
+    }
+
+    private static void getQuizzes(){
+        List<Quiz> quizzes = databaseHelper.getQuizzes();
+
+        for(Quiz quiz: quizzes){
+            System.out.println(quiz.getQuizID());
+            for(QuizQuestion question: quiz.getQuizQuestionList()){
+                System.out.println(question.getQuestion());
+                for (Answer answer: question.getAnswers()){
+                    System.out.println(answer.getAnswer());
+                }
+            }
+        }
+
+    }
+
+    private static void getSurveys(){
+        List<Survey> surveys = databaseHelper.getSurveys();
+
+        for(Survey survey: surveys){
+            System.out.println(survey.getTitle());
+            for(SurveyQuestion surveyQuestion: survey.getSurveyQuestionList()){
+                System.out.println(surveyQuestion.getQuestion());
+                for (String selection:surveyQuestion.getSelection()){
+                    System.out.println(selection);
+                }
             }
         }
     }
